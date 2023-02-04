@@ -1,0 +1,20 @@
+<ul class="flex">
+    <li class="p-1 bg-slate-50 m-2 border-2 border-slate-500 rounded drop-shadow-lg">
+        <a href="/" class="active:text-blue-600">Создать ссылку</a>
+    </li>
+    <?php
+                    if(!isset($_COOKIE['auth'])){
+                    ?>
+    <li class="p-1 bg-slate-50 m-2 border-2 border-slate-500 rounded drop-shadow-lg">
+        <a href="/login" class="active:text-blue-600">Авторизация</a>
+    </li>
+    <li class="p-1 bg-slate-50 m-2 border-2 border-slate-500 rounded drop-shadow-lg">
+        <a href="/registration" class="active:text-blue-600">Регистрация</a>
+    </li>
+    <?PHP }else{
+        echo "<li class='p-1 bg-slate-50 m-2 border-2 border-slate-500 rounded drop-shadow-lg'><a href='/dashboard' class='active:text-blue-600'>Панель управления</a></li>";
+        echo "<li class='p-1 bg-slate-50 m-2 border-2 border-slate-500 rounded drop-shadow-lg'><a href='/logout' class='active:text-blue-600'>Выход</a></li>";
+        echo "<li class='p-1  m-2    drop-shadow-lg'>Привет ".$_COOKIE['name']."</li>";
+    }
+    ?>
+</ul>

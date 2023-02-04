@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>dashboard</title>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <div>
+                <?php include __DIR__ . '/menu.html'; ?>
+            </div>
+            <div>
+                <?php
+                    if(isset($_SESSION['array_uri'])){
+                    ?>
+                <table class="border-collapse border border-slate-400 m-4">
+                    <tr class="bg-green-50">
+                        <th class="w-10 border border-slate-300">ID</th>
+                        <th class="w-20 border border-slate-300">From</th>
+                        <th class="border border-slate-300">To</th>
+                        <th class="w-70 border border-slate-300">Date created</th>
+                        <th class="w-70 border border-slate-300">Action</th>
+                    </tr>
+                    <?php
+                        foreach($_SESSION['array_uri'] as $uri){
+                            echo "<tr class='m-1'>
+                                    <td class='w-10 border border-slate-300 p-1'>".$uri['id']."</td>
+                                    <td class='w-20 border border-slate-300 p-1'><a href='http://infa.site/ln/".$uri['uri_from']."' >http://infa.site/ln/".$uri['uri_from']."</a></td>
+                                    <td class='w-40 border border-slate-300 p-1'><a href='".$uri['uri_to']."' >".$uri['uri_to']."</a></td>
+                                    <td class='w-70 border border-slate-300 p-1'>".$uri['create_at']."</td>
+                                    <td class='w-70 border border-slate-300 p-1 bg-blue-50'><a href='/dashboard/link-info/".$uri['id']."' >More...</a></td>
+                                </tr>";
+                        }
+                    ?>
+                </table>
+                <?php
+                    }
+                ?>
+
+                <?php
+                    if(isset($_SESSION['array_stat_uri'])){
+                    ?>
+                <table class="border-collapse border border-slate-400 m-4">
+                    <tr class="bg-green-50">
+                        <th class="w-10 border border-slate-300">IP address</th>
+                        <th class="w-20 border border-slate-300">Device</th>
+                        <th class="border border-slate-300">Platform</th>
+                        <th class="w-70 border border-slate-300">Browser</th>
+                        <th class="w-70 border border-slate-300">Transition date</th>
+                    </tr>
+                    <?php
+                        foreach($_SESSION['array_stat_uri'] as $stat_uri){
+                            echo "<tr class='m-1'>
+                                    <td class='w-10 border border-slate-300 p-1'>".$stat_uri['ip_address']."</td>
+                                    <td class='w-20 border border-slate-300 p-1'>".$stat_uri['device']."</td>
+                                    <td class='w-40 border border-slate-300 p-1'>".$stat_uri['platform']."</td>
+                                    <td class='w-70 border border-slate-300 p-1'>".$stat_uri['browser']."</td>
+                                    <td class='w-70 border border-slate-300 p-1'>".$stat_uri['create_at']."</td>
+                                    </tr>";
+                    }
+                    ?>
+                </table>
+                <?php
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

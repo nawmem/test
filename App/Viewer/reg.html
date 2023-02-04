@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+<body>
+<div>
+    <?php include __DIR__ . '/menu.html'; ?>
+</div>
+<?php if($_COOKIE['auth'] != true){?>
+<form action="/registration" method="POST">
+    <div class="p-4">
+        <?php echo isset($_COOKIE['err_reg'])?$_COOKIE['err_reg']:null ?>
+        <p>Регистрация</p>
+        <div class="m-2">
+            <label class="block ml-6" for="login">Логин</label>
+            <input class="border-2 border-cyan-700 rounded ml-4 p-1 pl-2" id="login" name="login">
+        </div>
+        <div class="m-2">
+            <label class="block ml-6" for="password">Пароль</label>
+            <input class="border-2 border-cyan-700 rounded ml-4 p-1 pl-2" id="password" name="password" type="password">
+        </div>
+        <button class="bg-blue-100 border-2 rounded border-sky-700 p-2 ml-6">Войти</button>
+    </div>
+</form>
+<?php } else {
+echo "<a href='/dashboard' > личный кабинет </a>";
+} ?>
+</body>
+</html>

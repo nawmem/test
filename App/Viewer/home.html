@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home</title>
+</head>
+<body>
+<div>
+    <div>
+        <div>
+            <div>
+                <?php include __DIR__ . '/menu.html'; ?>
+            </div>
+            <form action="/generate-uri" method="POST">
+                <div class="mt-4">
+                    <label class="block ml-6" for="to_uri">Введите ссылку для создания короткой ссылки</label>
+                    <input class="border-2 border-cyan-700 rounded ml-4 p-1 pl-2" type="text" id="to_uri" name="to_uri" value=<?php echo isset($_COOKIE['to_uri']) ? $_COOKIE['to_uri'] : ''; ?> >
+                </div>
+                <div class="mt-4">
+                    <label class="block ml-6" for="from_uri">Копируй коротккую ссылку</label>
+                    <input class="border-2 border-cyan-700 rounded ml-4 p-1 pl-2" type="text" id="from_uri" name="from_uri" value=<?php echo isset($_COOKIE['from_uri'] ) ? $_COOKIE['from_uri']  : ''; ?> >
+                </div>
+
+                <button class="bg-blue-100 border-2 rounded border-sky-700 p-2 ml-6 mt-2">Генерировать</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
