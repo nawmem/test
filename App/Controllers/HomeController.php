@@ -88,14 +88,12 @@ class HomeController{
                 $result->bindParam(':from', $random_uri, SQLITE3_TEXT);
                 $result->bindParam(':user_id', $user_id, SQLITE3_TEXT);
                 $result->bindParam(':to', $request->to_uri, SQLITE3_TEXT);
-//                $result->bindParam(':user', '', SQLITE3_TEXT);
                 $result->bindParam(':date', $date, SQLITE3_TEXT);
                 $result->execute();
-//                $random_uri
             }
             setcookie('to_uri', $request->to_uri, time() + 3);
             setcookie('from_uri', 'http://'.$_SERVER['HTTP_HOST'].'/ln/'.$random_uri , time() + 3);
-            header('Location: http://infa.site/');
+            header('location: /');
         }
     }
 
@@ -111,7 +109,6 @@ class HomeController{
         $platform = $agent->platform();
         $browser = $agent->browser();
         if ($uri) {
-            var_dump($agent->device(),$agent->platform(),$agent->browser());
             $sql = new \SQLite3(__DIR__.'/../db/generate.db');
             $result = $sql->prepare("INSERT INTO stat_uri ( uri_id, ip_address, device, platform, browser,  create_at) VALUES (:uri_id, :ip, :device, :platform, :browser, :date)");
             $result->bindParam(':uri_id', $uri['id'], SQLITE3_TEXT);

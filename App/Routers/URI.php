@@ -11,6 +11,7 @@ Router::routeGet(['Route' => '/login', 'Controller' => [HomeController::class, '
 Router::routePost(['Route' => '/login', 'Controller' => [HomeController::class, 'storeLogin']]);
 
 Router::routePost(['Route' => '/generate-uri', 'Controller' => [HomeController::class, 'storeGenerateUri']]);
+Router::routeGet(['Route' => '/generate-uri', 'Controller' => [HomeController::class, 'storeGenerateUri']]);
 Router::routeGet(['Route' => '/ln/{:url}', 'Controller' => [HomeController::class, 'createRedirectUri']]);
 
 Router::routeGet(['Route' => '/logout', 'Controller' => [HomeController::class, 'createLogout']]);

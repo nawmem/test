@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 setcookie('auth', isset($_COOKIE['auth']) == true ? true : false, time() + 3600);
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
@@ -14,6 +15,7 @@ spl_autoload_register(function ($class_name){
 require __DIR__.'/../vendor/autoload.php';
 // поделючаем роуты
 include __DIR__.'/../App/Routers/URI.php';
-$request = new Request();
+//$request = new Request();
 // запскаем поиск роута
+//var_dump($_SERVER);
 Router::searhUri($_SERVER['REQUEST_URI'],$_SERVER['REQUEST_METHOD']);

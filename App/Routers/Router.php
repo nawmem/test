@@ -94,7 +94,6 @@ class Router
                 break;
             // выполняем ПОСТ роуты
             case 'POST':
-                echo '<br>---POST---<br>';
                 get_param_url(self::$post_routers, $req_uri);
                 break;
             default:
